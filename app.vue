@@ -6,9 +6,6 @@
         seamspace
       </p>
     </div>
-    <p>
-      https://nuxt.com/docs/guide/directory-structure/server
-    </p>
     <ul v-if="menu">
       <li v-for="(item, index) in menu" :key="menu[index].title">
         <NuxtLink :to="item.path">
@@ -55,8 +52,8 @@ const menu = [
     path: '/'
   },
   {
-    title: 'Users',
-    path: '/users'
+    title: 'pay',
+    path: '/pay'
   }
 ]
 
