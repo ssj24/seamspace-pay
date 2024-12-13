@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@tosspayments/tosspayments-sdk": "^2.3.3",
+    "axios": "^1.7.9",
     "nuxt": "^3.14.1592",
+    "pdfkit": "^0.15.1",
     "vue": "latest",
     "vue-router": "latest"
   }

@@ -1,47 +1,27 @@
 <template>
   <div>
-    <div style="display: flex; align-items: center;">
-      <img src="@/assets/seamspace.png" width="70">
-      <p style="display: inline-block; font-size: 40px; font-weight: bold; margin: 0;">
-        seamspace
-      </p>
-    </div>
-    <ul v-if="menu">
-      <li v-for="(item, index) in menu" :key="menu[index].title">
-        <NuxtLink :to="item.path">
-          {{ item.title }}
-        </NuxtLink>
-      </li>
-    </ul>
-    <h2>
-      API Routes (GET Methods)
-    </h2>
-    <ul v-if="apiGets">
-      <li v-for="(item, index) in apiGets" :key="apiGets[index].title">
-        <a :href="item.path">
-          {{ item.title }}
-        </a>
-      </li>
-    </ul>
-    <h2>
-      API Routes (POST Methods)
-    </h2>
-    <ul v-if="apiPosts">
-      <li v-for="(item, index) in apiPosts" :key="apiPosts[index].title">
-        <h3>
-          {{ item.title }}
-        </h3>
-        <p>Path:
-          {{ item.path }}
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center;">
+        <img src="@/assets/seamspace.png" width="70">
+        <p style="display: inline-block; font-size: 40px; font-weight: bold; margin: 0;">
+          seamspace
         </p>
-      </li>
-    </ul>
-    <NuxtPage/>
+      </div>
+      <div style="margin-right: 20px;">
+        <ul v-if="menu" style="text-align: center; list-style: none; padding: 0; display: flex; justify-content: center; gap: 20px;">
+          <li v-for="(item, index) in menu" :key="menu[index].title">
+            <NuxtLink :to="item.path" style="text-decoration: none;">
+              {{ item.title }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <NuxtPage />
   </div>
 </template>
 
 <script>
-// Use a static import for server-side compatibility
 import '~/assets/css/first.css'
 
 </script>
@@ -54,24 +34,14 @@ const menu = [
   {
     title: 'pay',
     path: '/pay'
-  }
-]
-
-const apiGets = [
-  {
-    title: 'API',
-    path: '/api'
   },
   {
-    title: 'API/Users',
-    path: '/api/users'
-  }
-]
-
-const apiPosts = [
+    title: 'estimate',
+    path: '/estimate'
+  },
   {
-    title: 'API/Users/Create/One',
-    path: '/api/users/create/one'
+    title: 'book',
+    path: '/book'
   }
 ]
 </script>
