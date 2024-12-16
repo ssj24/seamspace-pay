@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-    <h2 style="font-size: 1.8em;">전체 플랜 보기</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; justify-content: center; max-width: 1600px; position: relative;">
+    <h2 style="font-size: 2em;">전체 플랜 보기</h2>
+    <div v-if="true" style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; justify-content: center; max-width: 1600px; position: relative;">
       <div v-for="(plan, index) in plans" :key="plan.value" style="position: relative;border-radius: 36px; width: 250px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center; font-weight: 900">
         <h2 :style="{
           textAlign: 'center',
@@ -87,7 +87,7 @@
     </div>
     <div style="width: 100%; margin-top: 100px; display: flex; flex-direction: column; align-items: center;">
       <p style="font-size: 1.2em; color: #999;">나에게 맞는 플랜을 찾기 어려울 땐,</p>
-      <h2 style="font-size: 1.8em; margin-top: 10px; margin-bottom: 50px;">맞춤형 플랜 찾기</h2>
+      <h2 style="font-size: 2em; margin-top: 10px; margin-bottom: 50px;">맞춤형 플랜 찾기</h2>
       <findplan />
     </div>
   </div>
@@ -118,12 +118,19 @@ export default {
     findplan
   },
   methods: {
-    goToPay() {
+    goToPay(planTitle) {
+      if (['schoolMedium', 'schoolLarge'].includes(planTitle)) {
+        if (process.client && window.Kakao) {
+          return window.Kakao.Channel.chat({
+            channelPublicId: '_FvrSG', // Use your channel public ID
+          });
+        }
+      }
       this.$router.push('/pay');
     },
     goToEstimate() {
       this.$router.push('/estimate');
-    }
+    },
   }
 }
 </script>
