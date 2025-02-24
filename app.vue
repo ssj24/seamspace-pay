@@ -18,11 +18,13 @@
       </div>
     </div>
     <NuxtPage />
+    <Footer />
   </div>
 </template>
 
 <script>
 import '~/assets/css/first.css'
+import Footer from '~/components/footer.vue'
 
 </script>
 <script setup>

@@ -23,7 +23,7 @@
           }">{{ plan.subTitle }}</p>
           <p style="padding: 0; margin-bottom: 0;">최대 등록 가능한 학생 수</p>
           <p style="padding: 0; margin-top: 4px; font-size: 17px;">{{ plan.maxStudent === Infinity ? '제한없음' : plan.maxStudent + '명' }}</p>
-          <div style="text-align: left; margin: 20px 0px;">
+          <div style="text-align: center; margin: 20px 0px;">
             <template v-for="period in periods">
               <div v-if="period.value === 'month1'" :key="`${period.value}-if`" :style="{
                 cursor: 'grab',
@@ -44,12 +44,13 @@
                 padding: '20px 10px',
                 position: 'relative',
                 display: 'flex',
-                alignItems: 'center'
+                alignItems: 'center',
+                justifyContent: 'center'
               }">
                 <input type="radio" :name="`period-${plan.value}`" :id="`${plan.value}-${period.value}`" :value="period.value" v-model="selectedPeriods[plan.value]" @change="updateSelectedPeriod(plan.value, period.value)" style="margin-right: 8px; cursor: grab;">
                 <label :for="`${plan.value}-${period.value}`" :style="{
                   cursor: 'grab',
-                  flex: 1
+                  // flex: 1
                 }">
                   <p style="margin: 0; padding: 0;">
                     <span :style="{ color: plan.color }">{{ period.title }}</span>
@@ -89,6 +90,14 @@
       <p style="font-size: 1.2em; color: #999;">나에게 맞는 플랜을 찾기 어려울 땐,</p>
       <h2 style="font-size: 2em; margin-top: 10px; margin-bottom: 50px;">맞춤형 플랜 찾기</h2>
       <findplan />
+    </div>
+    <div class="bottom_section" style="width: 100%; margin-top: 100px; display: flex; flex-direction: column; align-items: center;">
+      <p style="font-size: 1.2em; color: #999;">추가적인 가격 상담을 위한</p>
+      <h2 style="font-size: 2em; margin-top: 10px; margin-bottom: 50px;">도입 문의</h2>
+      <button class="custom-button" @click="() => console.log('h')" :style="{ backgroundColor: '#FFF7BB', color: 'black', fontSize: '24px', fontWeight: 'bold'}">
+        카톡으로 빠른 상담 가능! 상담 바로가기
+      </button>
+      <p>전화 문의 042-864-5566</p>
     </div>
   </div>
   
@@ -157,5 +166,21 @@ export default {
     .payment-flow__submit-button:active {
       transform: translateY(1px);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .custom-button {
+      padding: 24px 40px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 20px;
+      transition: all 0.2s ease;
+      background-color: #fff;
+      color: #666;
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+    }
+    .bottom_section {
+      margin-bottom: 100px;
     }
   </style>

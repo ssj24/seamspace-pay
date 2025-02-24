@@ -71,9 +71,14 @@
               <p>{{ period }}개월 : {{ plans[foundPlan.idx]['month' + period].toLocaleString() }}원 <span v-if="foundPlan.idx == 0 &&classCount > 1">* {{ classCount }}학급 = {{ (plans[foundPlan.idx]['month' + period] * classCount).toLocaleString() }}원</span></p>
             </div>
           </div>
-          <button class="findplan-button" @click="goToEstimate" :style="{ backgroundColor: foundPlan.color2, color: 'black' }">
-            {{ foundPlan.buttonLabel }}
-          </button>
+          <div style="display: flex; justify-content: center;">
+            <button class="findplan-button" @click="goToEstimate" :style="{ backgroundColor: foundPlan.color2, color: 'black' }">
+              {{ foundPlan.buttonLabel }}
+            </button>
+            <button class="findplan-button" @click="goToEstimate" :style="{ backgroundColor: foundPlan.color2, color: 'black' }">
+              {{ foundPlan.button2Label }}
+            </button>
+          </div>
 
         </div>
       </div>
@@ -105,6 +110,7 @@ export default {
         color: this.plans[0].color,
         color2: this.plans[0].color2,
         buttonLabel: '견적서 신청 바로가기',
+        button2Label: '구매하기',
         idx: 0,
       }
     }
@@ -260,9 +266,9 @@ section {
   border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
-  width: 100%;
+  width: 40%;
   cursor: pointer;
-  margin: 20px 0px;
+  margin: 20px;
   transition: all 0.2s ease;
   background-color: #fff;
   color: #666;
